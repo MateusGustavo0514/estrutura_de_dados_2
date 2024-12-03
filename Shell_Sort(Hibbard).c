@@ -1,8 +1,15 @@
 #include <stdio.h>
 
-void shellSort(int arr[], int n) {
-    // Gaps padrão: inicia em n/2 e divide por 2 em cada iteração
-    for (int gap = n / 2; gap > 0; gap /= 2) {
+void shellSortHibbard(int arr[], int n) {
+    // Gera a maior potência de 2 menos 1 (Hibbard)
+    int gap = 1;
+    while (gap < n) {
+        gap = 2 * gap + 1; // Hibbard: 1, 3, 7, 15, ...
+    }
+    gap = (gap - 1) / 2; // Ajusta para o maior gap inicial
+    
+    // Shell Sort usando a sequência de Hibbard
+    while (gap > 0) {
         for (int i = gap; i < n; i++) {
             int temp = arr[i];
             int j = i;
@@ -12,6 +19,7 @@ void shellSort(int arr[], int n) {
             }
             arr[j] = temp;
         }
+        gap = (gap - 1) / 2;
     }
 }
 
@@ -29,9 +37,9 @@ int main() {
     printf("Array original:\n");
     printArray(arr, n);
 
-    shellSort(arr, n);
+    shellSortHibbard(arr, n);
 
-    printf("Array ordenado (Shell Sort padrão):\n");
+    printf("Array ordenado (Hibbard):\n");
     printArray(arr, n);
 
     return 0;

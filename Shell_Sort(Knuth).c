@@ -1,8 +1,14 @@
 #include <stdio.h>
 
-void shellSort(int arr[], int n) {
-    // Gaps padrão: inicia em n/2 e divide por 2 em cada iteração
-    for (int gap = n / 2; gap > 0; gap /= 2) {
+void shellSortKnuth(int arr[], int n) {
+    // Gera o maior intervalo na sequência de Knuth
+    int gap = 1;
+    while (gap < n / 3) {
+        gap = gap * 3 + 1; // Knuth: 1, 4, 13, 40, ...
+    }
+    
+    // Shell Sort usando a sequência de Knuth
+    while (gap > 0) {
         for (int i = gap; i < n; i++) {
             int temp = arr[i];
             int j = i;
@@ -12,6 +18,7 @@ void shellSort(int arr[], int n) {
             }
             arr[j] = temp;
         }
+        gap = gap / 3;
     }
 }
 
@@ -29,9 +36,9 @@ int main() {
     printf("Array original:\n");
     printArray(arr, n);
 
-    shellSort(arr, n);
+    shellSortKnuth(arr, n);
 
-    printf("Array ordenado (Shell Sort padrão):\n");
+    printf("Array ordenado (Knuth):\n");
     printArray(arr, n);
 
     return 0;
