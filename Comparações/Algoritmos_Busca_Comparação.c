@@ -92,7 +92,7 @@ void measureSearch(int (*searchFunction)(int[], int, int), int arr[], int n, int
 }
 
 int main() {
-    int n = 10000;  // Tamanho fixo da lista
+    int n = 500000;  // Tamanho fixo da lista
     int *arr = (int *)malloc(n * sizeof(int));
 
     // Gerar lista aleatória e ordenar
