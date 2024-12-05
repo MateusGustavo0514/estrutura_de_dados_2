@@ -210,7 +210,7 @@ void quickSortWrapper(int arr[], int n) {
 }
 
 int main() {
-    int n = 10000; // Tamanho da lista
+    int n = 400000; // Tamanho da lista
     int *arr = (int*)malloc(n * sizeof(int));
 
     // Gerar lista aleatória
